@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
 	"io"
 	"net/http"
@@ -57,6 +58,8 @@ func main() {
 		result := *ProjectName + " is ok, current time is " + timeFormat
 		c.String(http.StatusOK, result)
 	})
+
+	pprof.Register(r)
 
 	r.Run(*ListenAddr)
 }
